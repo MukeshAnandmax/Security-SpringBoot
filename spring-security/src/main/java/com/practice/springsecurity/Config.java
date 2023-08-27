@@ -25,7 +25,8 @@ public class Config extends WebSecurityConfigurerAdapter {
     //Authorization purpose
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/auth1/**").hasAuthority(AUTH1)
+        http.httpBasic().and()
+                .authorizeRequests().antMatchers("/auth1/**").hasAuthority(AUTH1)
                 .antMatchers("/auth2").hasAuthority(AUTH2)
                 .antMatchers("/**").permitAll().and().formLogin();
     }
